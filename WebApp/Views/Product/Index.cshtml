@@ -1,0 +1,29 @@
+﻿@model IEnumerable<Data.Dto.ProductDTO>
+
+        @{
+             ViewBag.Title = "Products";
+         }
+
+@{
+    var grid = new WebGrid(Model, canPage: true, rowsPerPage: 20);
+    grid.Pager(WebGridPagerModes.All);
+}
+
+<div style="margin-top: 20px" class="well bs-component">
+<p>
+ @*@Html.ActionLink("New Product", "Create")*@
+ </p>
+   @grid.GetHtml(
+            columns: grid.Columns(
+           grid.Column("Title", "Title"),
+           grid.Column("CategoryName", "CategoryName"),
+           grid.Column("Price", "Price"),
+           grid.Column(header: " ", format: (item) =>
+               new HtmlString(
+                   Html.ActionLink("Edit", "Edit", new {id = item.ProductId }).ToString() + "  |" +
+                   Html.ActionLink("Delete", "Delete", new {id = item.ProductId }).ToString()
+                    )
+                )
+            )
+        )
+</div>
