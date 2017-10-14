@@ -13,5 +13,7 @@ namespace Data
         ProductDTO GetProduct(int productId);
         int StoreProduct(ProductDTO product);
         bool DeleteProduct(int productId);
+
+        List<CategoryDTO> GetCategories();
     }
 }

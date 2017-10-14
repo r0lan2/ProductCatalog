@@ -11,12 +11,13 @@ namespace Data
 {
     public class EFRepository:IRepository
     {
-        private ProductCatalogContext _context;
-        public EFRepository(ProductCatalogContext context)
+        private IProductCatalogContext _context;
+        public EFRepository(IProductCatalogContext context)
         {
             _context = context;
         }
 
+       
         public List<ProductDTO> GetProducts()
         {
             var query = (from p in _context.Products

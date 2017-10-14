@@ -9,9 +9,10 @@ using Data.Implementations.EF.Entities;
 
 namespace Data.Implementations.EF.DataContext
 {
-    interface IProductCatalogContext
+    public interface IProductCatalogContext
     {
         IDbSet<Category> Categories { get; set; }
         IDbSet<Product> Products { get; set; }
+        int SaveChanges();
     }
 }
