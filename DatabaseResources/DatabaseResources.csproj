@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="CreateDatabase\000001 - Initial Script.sql" />
+    <Content Include="CreateDatabase\000002 - InsertData.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

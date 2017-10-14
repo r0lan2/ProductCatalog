@@ -15,9 +15,9 @@
  </p>
    @grid.GetHtml(
             columns: grid.Columns(
-           grid.Column("Title", "Title"),
-           grid.Column("CategoryName", "CategoryName"),
-           grid.Column("Price", "Price"),
+           grid.Column("Title", "Title",  canSort: true, style: "productTitleColumn"),
+           grid.Column("CategoryName", "CategoryName" ,canSort: true, style: "categoryColumn"),
+           grid.Column("Price", "Price", canSort: true, style: "priceColumn"),
            grid.Column(header: " ", format: (item) =>
                new HtmlString(
                    Html.ActionLink("Edit", "Edit", new {id = item.ProductId }).ToString() + "  |" +

@@ -8,7 +8,11 @@ using Data.Implementations.EF.DataContext;
 using System;
 using System.Linq;
 using System.Net;
+using System.Threading.Tasks;
 using System.Web.Mvc;
+using Data.Dto;
+using WebApp.Models;
+
 namespace WebApp.Controllers
 {
     public class ProductController : Controller
@@ -31,6 +35,36 @@ namespace WebApp.Controllers
             return View();
         }
 
+
+       
+        [HttpPost]
+        public ActionResult Create(ProductDTO prod)
+        {
+            return StoreProduct(prod);
+        }
+
+        private ActionResult StoreProduct(ProductDTO prod)
+        {
+            try
+            {
+                repository.StoreProduct(prod);
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex )
+            {
+                ModelState.AddModelError("", ex.Message);
+                PopulateCategories();
+                return View();
+            }
+        }
+
+
+        [HttpPost]
+        public ActionResult Edit(ProductDTO prod)
+        {
+            return StoreProduct(prod);
+        }
+
         public void PopulateCategories(object selectedCategory = null)
         {
             var categories = repository.GetCategories();
@@ -38,21 +72,11 @@ namespace WebApp.Controllers
         }
 
 
-        public ActionResult Edit(int? id)
+        public ActionResult Edit(int id)
         {
-            //if (id == null)
-            //{
-            //    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            //}
-            //Project proj = unitOfWork.GetProjectAndAreas(id.Value);
-            //if (proj == null)
-            //{
-            //    return HttpNotFound();
-            //}
-            //PopulateCustomersDropDownList(proj.CustomerId);
-            //PopulateProjectAdministratorsDropDownList(proj.ProjectManagerId);
-            //return View(proj);
-            return View();
+            var product = repository.GetProduct(id);
+            PopulateCategories(id);
+            return View(product);
         }
 
 

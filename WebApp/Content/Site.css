@@ -22,3 +22,17 @@ select,
 textarea {
     max-width: 280px;
 }
+
+
+.productTitleColumn {
+    width: 200px;
+}
+
+
+.priceColumn {
+    width: 80px;
+}
+
+.categoryColumn {
+    width: 200px;
+}

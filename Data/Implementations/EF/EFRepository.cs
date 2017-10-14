@@ -66,7 +66,7 @@ namespace Data
 
         public int StoreProduct(ProductDTO product)
         {
-            return product.ProductId > 0 ? InsertNewProduct(product) : UpdateProduct(product);
+            return product.ProductId <= 0 ? InsertNewProduct(product) : UpdateProduct(product);
         }
 
         private int InsertNewProduct(ProductDTO product)

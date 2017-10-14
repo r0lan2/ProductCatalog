@@ -28,7 +28,7 @@ BEGIN
 CREATE TABLE [dbo].[Product](
 	[ProductId] [int] IDENTITY(1,1) NOT NULL,
 	[CategoryId] [int] NOT NULL,
-	[Title] nvarchar(100) ,
+	[Title] nvarchar(100) NOT NULL,
 	[Price] [float] NOT NULL	
  CONSTRAINT [PK_PigmentConsumption] PRIMARY KEY CLUSTERED 
 (
