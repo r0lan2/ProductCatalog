@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dto\CategoryDTO.cs" />
     <Compile Include="Dto\ProductDTO.cs" />
     <Compile Include="Implementations\EF\DataContext\IProductCatalogContext.cs" />
     <Compile Include="Implementations\EF\DataContext\ProductCatalogContext.cs" />

@@ -33,6 +33,20 @@ namespace Data
             return query;
         }
 
+
+
+        public List<CategoryDTO> GetCategories()
+        {
+            var query = (from p in _context.Categories
+                select new CategoryDTO
+                {
+                    CategoryId = p.CategoryId,
+                    Name = p.Name
+                }).ToList();
+
+            return query;
+        }
+
         public ProductDTO GetProduct(int productId)
         {
             var product = (from p in _context.Products

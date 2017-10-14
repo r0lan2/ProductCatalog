@@ -1,1 +1,35 @@
-﻿
+﻿@model Data.Dto.ProductDTO
+
+@{
+    ViewBag.Title = "Delete product";
+}
+
+<div style="margin-top: 20px" class="well bs-component">
+
+    <h3>Delete product</h3>
+    <div>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                <label class="col-md-4 control-label">
+                   Product Name
+                </label>
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Title)
+            </dd>
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <button name="button" value="send" class="btn btn-primary">Delete </button>
+                @Html.ActionLink("Back To List", "Index")
+            </div>
+        }
+    </div>
+
+
+</div>
