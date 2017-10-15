@@ -16,9 +16,9 @@ namespace Data
         static MemoryRepository()
         {
             _categories.Add(1, new CategoryDTO() {CategoryId = 1,Name = "Category A"});
-            _categories.Add(2, new CategoryDTO() { CategoryId = 1, Name = "Category B" });
-            _categories.Add(3, new CategoryDTO() { CategoryId = 1, Name = "Category C" });
-            _categories.Add(4, new CategoryDTO() { CategoryId = 1, Name = "Category D" });
+            _categories.Add(2, new CategoryDTO() { CategoryId = 2, Name = "Category B" });
+            _categories.Add(3, new CategoryDTO() { CategoryId = 3, Name = "Category C" });
+            _categories.Add(4, new CategoryDTO() { CategoryId = 4, Name = "Category D" });
         }
 
         public List<ProductDTO> GetProducts()

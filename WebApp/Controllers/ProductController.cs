@@ -77,7 +77,7 @@ namespace WebApp.Controllers
         public ActionResult Edit(int id)
         {
             var product = repository.GetProduct(id);
-            PopulateCategories(id);
+            PopulateCategories(product.CategoryId);
             return View(product);
         }
 
