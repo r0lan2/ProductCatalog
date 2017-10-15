@@ -17,10 +17,7 @@ namespace WebApp.Controllers
 {
     public class ProductController : Controller
     {
-        //private const string connectionString = "server=.;database=ProductCatalog;integrated security=sspi";
-        //private EFRepository repository = new EFRepository(new ProductCatalogContext(connectionString));
-
-        private IRepository repository;
+       private IRepository repository;
         public ProductController(IRepository repo)
         {
             repository = repo;
@@ -28,8 +25,6 @@ namespace WebApp.Controllers
 
         public ActionResult Index()
         {
-            
-           
             var products = repository.GetProducts();
             return View(products);
         }

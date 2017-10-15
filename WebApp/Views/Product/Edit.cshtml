@@ -9,7 +9,7 @@
         @Html.AntiForgeryToken()
         <h4>Edit Product</h4>
         <hr />
-
+        @Html.HiddenFor(model => model.ProductId)
         <div class="form-group">
             <label class="col-md-2 control-label">
                 Title

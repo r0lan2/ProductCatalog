@@ -14,7 +14,7 @@ namespace WebApp
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
-            IocConfigurator.ConfigureDependencyInjection();
+            IocConfigurator.ConfigureDependencyInjection(IocConfigurator.RepositoryType.EntityFramework);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);

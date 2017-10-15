@@ -40,6 +40,7 @@ namespace Data
         {
             var newProductId = _products.Keys.Count > 0 ? _products.Keys.Max() + 1: 1;
             product.ProductId = newProductId;
+            product.CategoryName = GetCategory(product.CategoryId).Name;
             _products.Add(newProductId, product);
             return newProductId;
         }

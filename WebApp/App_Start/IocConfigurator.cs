@@ -13,17 +13,46 @@ namespace WebApp.App_Start
 {
     public static class IocConfigurator
     {
-        public static void ConfigureDependencyInjection()
+        public static void ConfigureDependencyInjection(RepositoryType type)
         {
             var builder = new ContainerBuilder();
-            var connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"];
             builder.RegisterControllers(typeof(MvcApplication).Assembly);
-            //builder.RegisterType<ProductCatalogContext>().As<IProductCatalogContext>().WithParameter("conString", connectionString.ConnectionString);
-            //builder.RegisterType<EFRepository>().As<IRepository>();
-            builder.RegisterType<MemoryRepository>().As<IRepository>().SingleInstance();
+
+            if (type == RepositoryType.EntityFramework)
+            {
+                var connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"];
+                builder.RegisterType<ProductCatalogContext>().As<IProductCatalogContext>().WithParameter("conString", connectionString.ConnectionString);
+                builder.RegisterType<EFRepository>().As<IRepository>();
+            }
+            else
+            {
+                builder.RegisterType<MemoryRepository>().As<IRepository>().SingleInstance();
+            }
 
             IContainer container = builder.Build();
+          
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
         }
+
+
+        /// <summary>
+        /// Autofac documentation recommend create a delegate in order to change the implementation in a safe way.
+        /// I would like to change this in the future. 
+        /// </summary>
+        /// <param name="type"></param>
+        public static void UpdateRepositorySelection(RepositoryType type)
+        {
+           
+            ConfigureDependencyInjection(type);
+        }
+
+        public enum RepositoryType
+        {
+            EntityFramework,
+            Memory
+        }
     }
+
+
+   
 }
